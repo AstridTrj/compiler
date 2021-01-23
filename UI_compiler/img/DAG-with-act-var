@@ -1,0 +1,53 @@
+digraph {
+	rankdir=TB
+	2 [label="n2
+6.28
+['T3']" shape=box style=rounded]
+	3 [label="n3
+R
+[]" shape=box style=rounded]
+	4 [label="n4
+r
+[]" shape=box style=rounded]
+	5 [label="n5
++
+['T2']" shape=box style=rounded]
+	5 -> 3 [arrowhead=vee dir=none]
+	5 -> 4 [arrowhead=vee dir=none]
+	6 [label="n6
+*
+['T5']" shape=box style=rounded]
+	6 -> 2 [arrowhead=vee dir=none]
+	6 -> 5 [arrowhead=vee dir=none]
+	7 [label="n7
+-
+['T6']" shape=box style=rounded]
+	7 -> 3 [arrowhead=vee dir=none]
+	7 -> 4 [arrowhead=vee dir=none]
+	8 [label="n8
+*
+['B']" shape=box style=rounded]
+	8 -> 6 [arrowhead=vee dir=none]
+	8 -> 7 [arrowhead=vee dir=none]
+	15 [label="n15
+2.0
+[]" shape=box style=rounded]
+	16 [label="n16
+T0
+[]" shape=box style=rounded]
+	17 [label="n17
+*
+['T1']" shape=box style=rounded]
+	17 -> 15 [arrowhead=vee dir=none]
+	17 -> 16 [arrowhead=vee dir=none]
+	18 [label="n18
+*
+['A']" shape=box style=rounded]
+	18 -> 17 [arrowhead=vee dir=none]
+	18 -> 5 [arrowhead=vee dir=none]
+	19 [label="n19
+*
+['B']" shape=box style=rounded]
+	19 -> 18 [arrowhead=vee dir=none]
+	19 -> 7 [arrowhead=vee dir=none]
+}

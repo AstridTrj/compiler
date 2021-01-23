@@ -1,0 +1,21 @@
+digraph MDFA {
+	nodesep=.25 rankdir=LR size="20,5"
+	node [shape=doublecircle]
+	1 [label=1]
+	2 [label=2]
+	node [color=red shape=circle]
+	0 [label=0]
+	node [color=black shape=circle]
+	0 [label=0]
+	1 [label=1]
+	0 -> 1 [label=d]
+	0 [label=0]
+	2 [label=2]
+	0 -> 2 [label=0]
+	1 [label=1]
+	1 [label=1]
+	1 -> 1 [label=d]
+	1 [label=1]
+	1 [label=1]
+	1 -> 1 [label=0]
+}

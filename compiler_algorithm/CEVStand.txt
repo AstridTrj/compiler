@@ -1,0 +1,126 @@
+﻿primary_expression -->  IDENTIFIER |||  INT_NUM ||| CHAR_NUM ||| REAL_NUM ||| STRING_LITERAL |||  ( expression )
+
+postfix_expression  -->  primary_expression postfix_expression_1
+postfix_expression_1 -->  ( postfix_expression_2 |||  ++ postfix_expression_1 |||  -- postfix_expression_1  |||  $
+postfix_expression_2 -->  ) postfix_expression_1 |||  argument_expression_list ) postfix_expression_1
+
+argument_expression_list  -->  assignment_expression argument_expression_list_1
+argument_expression_list_1  -->  , assignment_expression argument_expression_list_1  |||  $
+
+unary_expression -->  postfix_expression |||  ++ unary_expression |||  -- unary_expression |||  unary_operator unary_expression |||  sizeof unary_expression_1
+unary_expression_1  -->  ( unary_expression_2 
+unary_expression_2 --> unary_expression ) |||  type_name )
+
+unary_operator -->  & |||  * |||  + |||  - |||  ~ |||  !
+
+multiplicative_expression  -->  unary_expression multiplicative_expression_1
+multiplicative_expression_1 -->  * unary_expression multiplicative_expression_1 |||  / unary_expression multiplicative_expression_1 |||  % unary_expression multiplicative_expression_1 |||  $
+
+additive_expression  -->  multiplicative_expression additive_expression_1
+additive_expression_1 -->  + multiplicative_expression additive_expression_1 |||  - multiplicative_expression additive_expression_1 |||  $
+
+shift_expression -->  additive_expression shift_expression_1
+shift_expression_1 -->  << additive_expression shift_expression_1  |||  >> additive_expression shift_expression_1 |||  $
+
+relational_expression -->  shift_expression relational_expression_1
+relational_expression_1 -->  < shift_expression relational_expression_1 |||  > shift_expression relational_expression_1 |||  <= shift_expression relational_expression_1  |||  >= shift_expression relational_expression_1 |||  $
+
+equality_expression  -->  relational_expression equality_expression_1
+equality_expression_1 -->  == relational_expression equality_expression_1 |||  != relational_expression equality_expression_1  |||  $
+
+and_expression -->  equality_expression and_expression_1
+and_expression_1 -->  & equality_expression and_expression_1 ||| $
+
+exclusive_or_expression -->  and_expression exclusive_or_expression_1
+exclusive_or_expression_1 -->  ^ and_expression exclusive_or_expression_1 |||  $
+
+inclusive_or_expression -->  exclusive_or_expression inclusive_or_expression_1
+inclusive_or_expression_1 -->  | exclusive_or_expression inclusive_or_expression_1 |||  $
+
+logical_and_expression -->  inclusive_or_expression logical_and_expression_1
+logical_and_expression_1 -->  && inclusive_or_expression logical_and_expression_1 |||  $
+
+logical_or_expression -->  logical_and_expression logical_or_expression_1
+logical_or_expression_1 -->  || logical_and_expression logical_or_expression_1 |||  $
+
+conditional_expression -->  logical_or_expression conditional_expression_1
+conditional_expression_1 -->  ? expression : conditional_expression |||  $
+
+assignment_expression --> conditional_expression assignment_expression_1
+assignment_expression_1 --> assignment_operator assignment_expression ||| $
+
+assignment_operator  -->  = |||  *= |||  /= |||  %= |||  += |||  -= |||  <<= |||  >>= |||  &= |||  ^= |||  |=
+
+expression -->  assignment_expression expression_1
+expression_1 --> , assignment_expression expression_1 ||| $
+
+constant_expression  -->  conditional_expression
+
+declaration  -->  declaration_specifiers init_declarator_list ;
+
+declaration_specifiers -->  storage_class_specifier declaration_specifiers_1 |||  type_specifier declaration_specifiers_1 |||  type_qualifier declaration_specifiers_1
+declaration_specifiers_1 -->  declaration_specifiers |||  $
+
+init_declarator_list -->  init_declarator init_declarator_list_1
+init_declarator_list_1 -->  , init_declarator init_declarator_list_1 |||  $
+
+init_declarator -->  declarator init_declarator_1
+init_declarator_1 -->  = assignment_expression |||  $
+
+storage_class_specifier -->  typedef |||  extern |||  static |||  auto |||  register
+
+type_specifier -->  void |||  char |||  short |||  int |||  long |||  float |||  double |||  signed |||  unsigned |||  TYPE_NAME
+
+specifier_qualifier_list -->  type_specifier specifier_qualifier_list_1 |||  type_qualifier specifier_qualifier_list_1
+specifier_qualifier_list_1 -->  specifier_qualifier_list |||  $
+
+type_qualifier -->  const |||  volatile
+
+declarator --> direct_declarator
+
+direct_declarator -->  IDENTIFIER direct_declarator_1 |||  ( declarator ) direct_declarator_1
+direct_declarator_1 -->  ( direct_declarator_2 |||  $
+direct_declarator_2 -->  parameter_type_list ) direct_declarator_1 |||  identifier_list ) direct_declarator_1 |||  ) direct_declarator_1
+
+parameter_type_list -->  parameter_list
+
+parameter_list -->  parameter_declaration parameter_list_1
+parameter_list_1 -->  , parameter_declaration parameter_list_1 |||  $
+
+parameter_declaration -->  declaration_specifiers parameter_declaration_1
+parameter_declaration_1 -->  declarator |||  $
+
+identifier_list  -->  IDENTIFIER identifier_list_1
+identifier_list_1 -->  , IDENTIFIER identifier_list_1 |||  $
+
+type_name -->  specifier_qualifier_list   
+
+statement -->  labeled_statement |||  compound_statement |||  expression_statement |||  selection_statement |||  iteration_statement |||  jump_statement   
+
+labeled_statement -->  case constant_expression : statement |||  default : statement
+
+compound_statement -->  { compound_statement_1
+compound_statement_1 -->  } |||  statement_list } |||  declaration_list compound_statement_2
+compound_statement_2 -->  } |||  statement_list }
+
+declaration_list -->  declaration declaration_list_1
+declaration_list_1 -->  declaration declaration_list_1 |||  $
+
+statement_list -->  statement statement_list_1
+statement_list_1 -->  statement statement_list_1 |||  $
+
+expression_statement -->  ; |||  expression ;
+
+selection_statement -->  if ( expression ) statement else statement  |||  switch ( expression ) statement
+
+iteration_statement  -->  while ( expression ) statement |||  do statement while ( expression ) ; |||  for ( expression_statement expression_statement iteration_statement_1
+iteration_statement_1 -->  ) statement |||  expression ) statement
+
+jump_statement -->  goto IDENTIFIER ; |||  continue ; |||  break ; |||  return jump_statement_1
+jump_statement_1 -->  ; |||  expression ;
+
+translation_unit -->  external_declaration translation_unit_1
+translation_unit_1 -->  external_declaration translation_unit_1 |||  $
+
+external_declaration --> declaration_specifiers declarator external_declaration_1
+external_declaration_1 --> compound_statement ||| init_declarator_1 init_declarator_list_1 ;

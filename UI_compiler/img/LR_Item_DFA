@@ -1,0 +1,158 @@
+digraph LR_Item_DFA {
+	nodesep=.25 rankdir=LR
+	node [color=red shape=rectangle]
+	0 [label="I0
+S'→. E
+E→. a A
+E→. b B
+"]
+	node [color=black shape=rectangle]
+	graph [splines=compound]
+	0 [label="I0
+S'→. E
+E→. a A
+E→. b B
+"]
+	1 [label="I1
+E→b . B
+B→. c B
+B→. d
+"]
+	0 -> 1 [label=b]
+	0 [label="I0
+S'→. E
+E→. a A
+E→. b B
+"]
+	2 [label="I2
+S'→E .
+"]
+	0 -> 2 [label=E]
+	0 [label="I0
+S'→. E
+E→. a A
+E→. b B
+"]
+	3 [label="I3
+E→a . A
+A→. c A
+A→. d
+"]
+	0 -> 3 [label=a]
+	1 [label="I1
+E→b . B
+B→. c B
+B→. d
+"]
+	4 [label="I4
+E→b B .
+"]
+	1 -> 4 [label=B]
+	1 [label="I1
+E→b . B
+B→. c B
+B→. d
+"]
+	5 [label="I5
+B→c . B
+B→. c B
+B→. d
+"]
+	1 -> 5 [label=c]
+	1 [label="I1
+E→b . B
+B→. c B
+B→. d
+"]
+	6 [label="I6
+B→d .
+"]
+	1 -> 6 [label=d]
+	3 [label="I3
+E→a . A
+A→. c A
+A→. d
+"]
+	7 [label="I7
+A→c . A
+A→. c A
+A→. d
+"]
+	3 -> 7 [label=c]
+	3 [label="I3
+E→a . A
+A→. c A
+A→. d
+"]
+	8 [label="I8
+A→d .
+"]
+	3 -> 8 [label=d]
+	3 [label="I3
+E→a . A
+A→. c A
+A→. d
+"]
+	9 [label="I9
+E→a A .
+"]
+	3 -> 9 [label=A]
+	5 [label="I5
+B→c . B
+B→. c B
+B→. d
+"]
+	10 [label="I10
+B→c B .
+"]
+	5 -> 10 [label=B]
+	5 [label="I5
+B→c . B
+B→. c B
+B→. d
+"]
+	5 [label="I5
+B→c . B
+B→. c B
+B→. d
+"]
+	5 -> 5 [label=c]
+	5 [label="I5
+B→c . B
+B→. c B
+B→. d
+"]
+	6 [label="I6
+B→d .
+"]
+	5 -> 6 [label=d]
+	7 [label="I7
+A→c . A
+A→. c A
+A→. d
+"]
+	7 [label="I7
+A→c . A
+A→. c A
+A→. d
+"]
+	7 -> 7 [label=c]
+	7 [label="I7
+A→c . A
+A→. c A
+A→. d
+"]
+	8 [label="I8
+A→d .
+"]
+	7 -> 8 [label=d]
+	7 [label="I7
+A→c . A
+A→. c A
+A→. d
+"]
+	11 [label="I11
+A→c A .
+"]
+	7 -> 11 [label=A]
+}

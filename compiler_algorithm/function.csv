@@ -1,0 +1,5 @@
+,if_fuc,loop_fun,return_test,main
+name,if_fuc,loop_fun,return_test,main
+return_type,double,void,double,int
+param_num,2,3,0,0
+param,"int,int","int,int,int",,
